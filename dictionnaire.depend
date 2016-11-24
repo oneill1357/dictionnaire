@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1480009184 source:c:\users\jack oneill\documents\projets\langage c\dictionnaire\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
