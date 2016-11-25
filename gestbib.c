@@ -5,9 +5,9 @@
 void menu(){
     printf("Dictionnaire.\n\n");
 
-    int choice = 0;
+    char choice;
 
-    while (choice <= 0 || choice > 7) {
+    while (choice < 49 || choice > 55) {
         printf("1 - Creer un fichier dictionnaire\n");
         printf("2 - Utiliser un dictionnaire existant\n");
         printf("3 - Fabriquer un dictionnaire a partir d'un fichier texte\n");
@@ -17,25 +17,24 @@ void menu(){
         printf("7 - Quitter\n");
 
         printf("\nChoix -> ");
-        scanf("\n%d", &choice);
+        scanf("\n%c", &choice);
     }
 
     switch (choice) {
-        case 1:
+        case 49:
             break;
-        case 2:
+        case 50:
             break;
-        case 3:
+        case 51:
             break;
-        case 4:
+        case 52:
             break;
-        case 5:
+        case 53:
             break;
-        case 6:
+        case 54:
             break;
-        case 7:
+        case 55:
             exit(0);
-            break;
         default:
             break;
     }
