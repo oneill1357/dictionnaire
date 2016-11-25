@@ -1,0 +1,7 @@
+.idea/
+CMakeLists.txt
+dictionnaire.cbp
+dictionnaire.depend
+dictionnaire.layout
+cmake-build-debug/
+obj/

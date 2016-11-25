@@ -36,6 +36,6 @@ void menu(){
         case 55:
             exit(0);
         default:
-            break;
+            exit(0);
     }
 }
