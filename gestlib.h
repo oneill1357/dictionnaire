@@ -7,4 +7,8 @@
 
 void menu();
 
+void deleteDictionaryFile();
+void insertWordDictionary();
+void searchWordDictionary();
+
 #endif //SOURCES_DICO_GESTLIB_H

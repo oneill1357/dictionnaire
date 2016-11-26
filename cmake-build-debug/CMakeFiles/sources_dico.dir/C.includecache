@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/gestbib.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/gestlib.h
+
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/main.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+gestlib.h
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/gestlib.h
+

@@ -28,14 +28,23 @@ void menu(){
         case 51:
             break;
         case 52:
+            deleteDictionaryFile();
             break;
         case 53:
+            insertWordDictionary();
             break;
         case 54:
+            searchWordDictionary();
             break;
         case 55:
             exit(0);
         default:
             break;
+
     }
 }
+
+
+void deleteDictionaryFile(){}
+void insertWordDictionary(){}
+void searchWordDictionary(){}
