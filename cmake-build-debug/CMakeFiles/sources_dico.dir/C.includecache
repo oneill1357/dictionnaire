@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/gestbib.c
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources/gestbib.c
 stdio.h
 -
 stdlib.h
@@ -14,9 +14,9 @@ stdlib.h
 string.h
 -
 
-C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/gestlib.h
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources/gestlib.h
 
-C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/main.c
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources/main.c
 stdio.h
 -
 stdlib.h
@@ -24,5 +24,5 @@ stdlib.h
 string.h
 -
 gestlib.h
-C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources_dico/gestlib.h
+C:/Users/vince/Documents/ESGI/C/Projet/Dictionnaire/sources/gestlib.h
 

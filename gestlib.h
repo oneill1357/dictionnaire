@@ -7,6 +7,9 @@
 
 void menu();
 
+void fileNotFound(char *);
+FILE* loadExistingDictionary(char *,char *);
+void useExistingDictionary(char *);
 void deleteDictionaryFile();
 void insertWordDictionary();
 void searchWordDictionary();

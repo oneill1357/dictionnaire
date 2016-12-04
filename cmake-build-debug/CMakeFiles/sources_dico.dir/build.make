@@ -42,10 +42,10 @@ RM = "C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico
+CMAKE_SOURCE_DIR = C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sources_dico.dir/depend.make
@@ -58,16 +58,16 @@ include CMakeFiles/sources_dico.dir/flags.make
 
 CMakeFiles/sources_dico.dir/gestbib.c.obj: CMakeFiles/sources_dico.dir/flags.make
 CMakeFiles/sources_dico.dir/gestbib.c.obj: ../gestbib.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sources_dico.dir/gestbib.c.obj"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\sources_dico.dir\gestbib.c.obj   -c C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\gestbib.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sources_dico.dir/gestbib.c.obj"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\sources_dico.dir\gestbib.c.obj   -c C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\gestbib.c
 
 CMakeFiles/sources_dico.dir/gestbib.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sources_dico.dir/gestbib.c.i"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\gestbib.c > CMakeFiles\sources_dico.dir\gestbib.c.i
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\gestbib.c > CMakeFiles\sources_dico.dir\gestbib.c.i
 
 CMakeFiles/sources_dico.dir/gestbib.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sources_dico.dir/gestbib.c.s"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\gestbib.c -o CMakeFiles\sources_dico.dir\gestbib.c.s
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\gestbib.c -o CMakeFiles\sources_dico.dir\gestbib.c.s
 
 CMakeFiles/sources_dico.dir/gestbib.c.obj.requires:
 
@@ -82,16 +82,16 @@ CMakeFiles/sources_dico.dir/gestbib.c.obj.provides.build: CMakeFiles/sources_dic
 
 CMakeFiles/sources_dico.dir/main.c.obj: CMakeFiles/sources_dico.dir/flags.make
 CMakeFiles/sources_dico.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sources_dico.dir/main.c.obj"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\sources_dico.dir\main.c.obj   -c C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sources_dico.dir/main.c.obj"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\sources_dico.dir\main.c.obj   -c C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\main.c
 
 CMakeFiles/sources_dico.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sources_dico.dir/main.c.i"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\main.c > CMakeFiles\sources_dico.dir\main.c.i
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\main.c > CMakeFiles\sources_dico.dir\main.c.i
 
 CMakeFiles/sources_dico.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sources_dico.dir/main.c.s"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\main.c -o CMakeFiles\sources_dico.dir\main.c.s
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\main.c -o CMakeFiles\sources_dico.dir\main.c.s
 
 CMakeFiles/sources_dico.dir/main.c.obj.requires:
 
@@ -118,7 +118,7 @@ sources_dico.exe: CMakeFiles/sources_dico.dir/build.make
 sources_dico.exe: CMakeFiles/sources_dico.dir/linklibs.rsp
 sources_dico.exe: CMakeFiles/sources_dico.dir/objects1.rsp
 sources_dico.exe: CMakeFiles/sources_dico.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable sources_dico.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable sources_dico.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\sources_dico.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -136,6 +136,6 @@ CMakeFiles/sources_dico.dir/clean:
 .PHONY : CMakeFiles/sources_dico.dir/clean
 
 CMakeFiles/sources_dico.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\cmake-build-debug C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\cmake-build-debug C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources_dico\cmake-build-debug\CMakeFiles\sources_dico.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\cmake-build-debug C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\cmake-build-debug C:\Users\vince\Documents\ESGI\C\Projet\Dictionnaire\sources\cmake-build-debug\CMakeFiles\sources_dico.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sources_dico.dir/depend
 
