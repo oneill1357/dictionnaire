@@ -7,11 +7,15 @@
 
 void menu();
 
+void retryOrExit();
 void fileNotFound(char *);
+FILE* askDictionaryPath(int,char *);
 FILE* loadExistingDictionary(char *,char *);
-void useExistingDictionary(char *);
-void deleteDictionaryFile();
-void insertWordDictionary();
-void searchWordDictionary();
+void createDictionaryFile(); //1
+void useExistingDictionary(); //2
+void buildDictionaryWithTxt(); //3
+void deleteDictionaryFile(); //4
+void insertWordDictionary(); //5
+void searchWordDictionary(); //6
 
 #endif //SOURCES_DICO_GESTLIB_H

@@ -1,15 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "gestlib.h"
 
 
+void retryOrExit(){
 
+    char res;
+    printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
+    scanf("%s", &res);
+    if(res == 79 || res == 111){
+        menu();
+    }else{
+        exit(0);
+    }
+
+}
 void fileNotFound(char * path){
-    printf("Le fichier n'a pas pu etre ouvert. (%s).  \n", path);
-    system("Pause");
-    menu();
+    printf("Impossible de charger le fichier. (%s).  \n", path);
+    retryOrExit();
 }
 
+FILE* askDictionaryPath(int num,char * mode){
+
+    if(num == 1){
+        printf("Nom du fichier dictionnaire a creer : ");
+    }else{
+        printf("Nom du fichier dictionnaire a utiliser: ");
+    }
+    char path[100];
+    scanf("%s",&path);
+    return loadExistingDictionary(path,mode);
+
+}
 //Ouvre et retourne le fichier
 FILE* loadExistingDictionary(char * path,char* mode){
 
@@ -23,39 +46,51 @@ FILE* loadExistingDictionary(char * path,char* mode){
 
     return file;
 }
+
+void createDictionaryFile(){
+
+    askDictionaryPath(1,"a");
+    printf("Le fichier dictionnaire a ete cree !\n");
+    retryOrExit();
+}
+
 // Ouvre et lit toutes les lignes du fichier
-void useExistingDictionary(char * path){
-    FILE* file = NULL;
+void useExistingDictionary(){
 
-    file = fopen(path,"r");
+    FILE* file = askDictionaryPath(-1,"r");
 
-    if(file != NULL) {
 
-        char line[100];
-        while(fgets(line, sizeof(line),file)){
-            printf("%s",line);
-        }
-
-        fclose(file);
-        system("pause");
-        menu();
-
-    }else{
-        fileNotFound(path);
+    char line[100];
+    while(fgets(line, sizeof(line),file)){
+        printf("%s",line);
     }
 
+    fclose(file);
+    retryOrExit();
+
+
 }
 
 // A modifier
+void buildDictionaryWithTxt(){
+    retryOrExit();
+}
+// Supprime un dictionnaire
 void deleteDictionaryFile(){
 
-    menu();
+    char path[100];
+    printf("Nom du fichier dictionnaire a supprimer : ");
+    scanf("%s",&path);
+    remove(path);
+    printf("Le dictionnaire a ete supprime");
+
+    retryOrExit();
 }
 
-// A modifier
+// Insert le mot à la fin du dictionnaire
 void insertWordDictionary(){
 
-    FILE* file = loadExistingDictionary("../dico/dico336k.txt","a");
+    FILE* file = askDictionaryPath(1,"a");
     char word[128];
     printf("Entrez le mot a rajouter au dictionnaire : ");
     scanf("%s", &word);
@@ -65,22 +100,36 @@ void insertWordDictionary(){
     fclose(file);
     printf("%s a ete rajoute au dictionnaire\n",word);
 
-    system("pause");
-    menu();
+    retryOrExit();
 }
 
-// A modifier
+// Recherche un mot dans le dictionnaire
 void searchWordDictionary(){
 
-    FILE* file = loadExistingDictionary("../dico/dico336k.txt","r");
+    FILE* file = askDictionaryPath(1,"r");
 
+    char word[100];
     char line[100];
-    while(fgets(line, sizeof(line),file)){
-        printf("%s",line);
+    int res = 0;
+
+    printf("Entrez le mot que vous voulez modifier : ");
+    scanf("%s", &word);
+
+    printf("Recherche en cours...\n");
+    while(fgets(line, sizeof(line), file)) {
+        if(strstr(line,word)) {
+            printf("Le mot '%s' se trouve dans le dictionnaire !\n",word);
+            res = 1;
+            break;
+        }
     }
     fclose(file);
 
-    menu();
+    if(!res){
+        printf("Le mot '%s' n'existe pas dans le dictionnaire.\n",word);
+    }
+
+    retryOrExit();
 
 }
 
@@ -104,11 +153,13 @@ void menu(){
 
     switch (choice) {
         case 49:
+            createDictionaryFile();
             break;
         case 50:
-            useExistingDictionary("../dico/dico336k.txt");
+            useExistingDictionary();
             break;
         case 51:
+            buildDictionaryWithTxt();
             break;
         case 52:
             deleteDictionaryFile();
