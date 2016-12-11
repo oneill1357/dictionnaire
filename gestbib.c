@@ -88,7 +88,6 @@ void buildDictionaryWithTxt() {
             fputc(c,dico);
         }
     }
-    fputs("\n\n",dico);
     fclose(txt);
     fclose(dico);
     printf("Le dictionnaire a ete construit\n");
