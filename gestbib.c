@@ -25,6 +25,10 @@ FILE* askDictionaryPath(int num,char * mode){
 
     if(num == 1){
         printf("Nom du fichier dictionnaire a creer : ");
+    }else if(num == 2){
+        printf("Nom du fichier texte a scanner : ");
+    }else if(num == 3){
+        printf("Nom du dictionnaire a remplir : ");
     }else{
         printf("Nom du fichier dictionnaire a utiliser: ");
     }
@@ -59,7 +63,6 @@ void useExistingDictionary(){
 
     FILE* file = askDictionaryPath(-1,"r");
 
-
     char line[100];
     while(fgets(line, sizeof(line),file)){
         printf("%s",line);
@@ -68,11 +71,15 @@ void useExistingDictionary(){
     fclose(file);
     retryOrExit();
 
-
 }
 
 // A modifier
 void buildDictionaryWithTxt(){
+
+    FILE* txt = askDictionaryPath(2,"r");
+    FILE* dico = askDictionaryPath(3,"a");
+
+    printf("Traitement en cours...\n");
     retryOrExit();
 }
 // Supprime un dictionnaire
@@ -90,7 +97,7 @@ void deleteDictionaryFile(){
 // Insert le mot à la fin du dictionnaire
 void insertWordDictionary(){
 
-    FILE* file = askDictionaryPath(1,"a");
+    FILE* file = askDictionaryPath(-1,"a");
     char word[128];
     printf("Entrez le mot a rajouter au dictionnaire : ");
     scanf("%s", &word);
@@ -106,13 +113,13 @@ void insertWordDictionary(){
 // Recherche un mot dans le dictionnaire
 void searchWordDictionary(){
 
-    FILE* file = askDictionaryPath(1,"r");
+    FILE* file = askDictionaryPath(-1,"r");
 
     char word[100];
     char line[100];
     int res = 0;
 
-    printf("Entrez le mot que vous voulez modifier : ");
+    printf("Entrez le mot que vous voulez rechercher : ");
     scanf("%s", &word);
 
     printf("Recherche en cours...\n");
