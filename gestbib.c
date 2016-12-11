@@ -4,7 +4,7 @@
 #include "gestlib.h"
 
 
-void retryOrExit(){
+void retryOrExit() {
 
     char res;
     printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
@@ -16,12 +16,12 @@ void retryOrExit(){
     }
 
 }
-void fileNotFound(char * path){
+void fileNotFound(char * path) {
     printf("Impossible de charger le fichier. (%s).  \n", path);
     retryOrExit();
 }
 
-FILE* askDictionaryPath(int num,char * mode){
+FILE* askDictionaryPath(int num,char * mode) {
 
     if(num == 1){
         printf("Nom du fichier dictionnaire a creer : ");
@@ -38,7 +38,7 @@ FILE* askDictionaryPath(int num,char * mode){
 
 }
 //Ouvre et retourne le fichier
-FILE* loadExistingDictionary(char * path,char* mode){
+FILE* loadExistingDictionary(char * path,char* mode) {
 
     FILE* file = NULL;
 
@@ -51,7 +51,7 @@ FILE* loadExistingDictionary(char * path,char* mode){
     return file;
 }
 
-void createDictionaryFile(){
+void createDictionaryFile() {
 
     askDictionaryPath(1,"a");
     printf("Le fichier dictionnaire a ete cree !\n");
@@ -59,7 +59,7 @@ void createDictionaryFile(){
 }
 
 // Ouvre et lit toutes les lignes du fichier
-void useExistingDictionary(){
+void useExistingDictionary() {
 
     FILE* file = askDictionaryPath(-1,"r");
 
@@ -74,28 +74,40 @@ void useExistingDictionary(){
 }
 
 // A modifier
-void buildDictionaryWithTxt(){
+void buildDictionaryWithTxt() {
 
     FILE* txt = askDictionaryPath(2,"r");
     FILE* dico = askDictionaryPath(3,"a");
+    int c;
 
     printf("Traitement en cours...\n");
+    while ((c = fgetc(txt)) != EOF) {
+        if(c == 32){
+            fputc('\n',dico);
+        }else{
+            fputc(c,dico);
+        }
+    }
+    fputs("\n\n",dico);
+    fclose(txt);
+    fclose(dico);
+    printf("Le dictionnaire a ete construit\n");
     retryOrExit();
 }
 // Supprime un dictionnaire
-void deleteDictionaryFile(){
+void deleteDictionaryFile() {
 
     char path[100];
     printf("Nom du fichier dictionnaire a supprimer : ");
     scanf("%s",&path);
     remove(path);
-    printf("Le dictionnaire a ete supprime");
+    printf("Le dictionnaire a ete supprime\n");
 
     retryOrExit();
 }
 
 // Insert le mot à la fin du dictionnaire
-void insertWordDictionary(){
+void insertWordDictionary() {
 
     FILE* file = askDictionaryPath(-1,"a");
     char word[128];
@@ -111,7 +123,7 @@ void insertWordDictionary(){
 }
 
 // Recherche un mot dans le dictionnaire
-void searchWordDictionary(){
+void searchWordDictionary() {
 
     FILE* file = askDictionaryPath(-1,"r");
 
@@ -140,7 +152,7 @@ void searchWordDictionary(){
 
 }
 
-void menu(){
+void menu() {
     printf("Dictionnaire.\n\n");
 
     char choice;
