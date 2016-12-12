@@ -3,7 +3,7 @@
 #include <string.h>
 #include "gestlib.h"
 
-FILE file = NULL;
+FILE* file = NULL;
 
 void retryOrExit() {
 
@@ -40,9 +40,6 @@ FILE* askDictionaryPath(int num,char * mode) {
 }
 //Ouvre et retourne le fichier
 FILE* loadExistingDictionary(char * path,char* mode) {
-
-    FILE* file = NULL;
-
     file = fopen(path,mode);
 
     if(file == NULL){
@@ -62,12 +59,12 @@ void createDictionaryFile() {
 // Ouvre et lit toutes les lignes du fichier
 void useExistingDictionary() {
 
-    FILE* file = askDictionaryPath(-1,"r");
+    file = askDictionaryPath(-1,"a");
 
-    char line[100];
-    while(fgets(line, sizeof(line),file)){
-        printf("%s",line);
-    }
+//    char line[100];
+//    while(fgets(line, sizeof(line),file)){
+//        printf("%s",line);
+//    }
 
     fclose(file);
     retryOrExit();
@@ -77,19 +74,19 @@ void useExistingDictionary() {
 // A modifier
 void buildDictionaryWithTxt() {
 
-    FILE* txt = askDictionaryPath(2,"r");
+//    FILE* txt = askDictionaryPath(2,"r");
     FILE* dico = askDictionaryPath(3,"a");
     int c;
 
     printf("Traitement en cours...\n");
-    while ((c = fgetc(txt)) != EOF) {
+    while ((c = fgetc(file)) != EOF) {
         if(c == 32){
             fputc('\n',dico);
         }else{
             fputc(c,dico);
         }
     }
-    fclose(txt);
+//    fclose(txt);
     fclose(dico);
     printf("Le dictionnaire a ete construit\n");
     retryOrExit();
@@ -109,7 +106,7 @@ void deleteDictionaryFile() {
 // Insert le mot à la fin du dictionnaire
 void insertWordDictionary() {
 
-    FILE* file = askDictionaryPath(-1,"a");
+//    FILE* file = askDictionaryPath(-1,"a");
     char word[128];
     printf("Entrez le mot a rajouter au dictionnaire : ");
     scanf("%s", &word);
@@ -125,7 +122,7 @@ void insertWordDictionary() {
 // Recherche un mot dans le dictionnaire
 void searchWordDictionary() {
 
-    FILE* file = askDictionaryPath(-1,"r");
+//    FILE* file = askDictionaryPath(-1,"r");
 
     char word[100];
     char line[100];
@@ -158,6 +155,7 @@ void menu() {
     char choice;
 
     do {
+        printf("Dictionnaire courant: %s\n\n", file);
         printf("1 - Creer un fichier dictionnaire\n");
         printf("2 - Utiliser un dictionnaire existant\n");
         printf("3 - Fabriquer un dictionnaire a partir d'un fichier texte\n");
