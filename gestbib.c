@@ -3,6 +3,7 @@
 #include <string.h>
 #include "gestlib.h"
 
+FILE file = NULL;
 
 void retryOrExit() {
 
