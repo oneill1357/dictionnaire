@@ -6,22 +6,14 @@
 
 void retryOrExit() {
 
-
-    int exitDo = 0;
-    do{
-        char res;
-        printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
-        scanf("%s", &res);
-        if(res == 79 || res == 111){
-            menu();
-            exitDo =1;
-        }else if( res == 78 || res == 110){
-            exit(0);
-        }else{
-            printf("Oo/Nn pour continuer ou quitter\n");
-        }
-
-    }while(!exitDo);
+    char res;
+    printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
+    scanf("%s", &res);
+    if(res == 79 || res == 111){
+        menu();
+    }else{
+        exit(0);
+    }
 
 }
 void fileNotFound(char * path) {
@@ -159,9 +151,73 @@ void searchWordDictionary() {
 
 }
 
-void listWordsNotExist(){
+void displayListCloseWords(){
 
+//    char line[100];
+//    char word[100];
+//    int t;
+//
+//    do {
+//        printf("Entrez le mot de proximite : ");
+//        scanf("%s", &word);
+//        printf("Entrez le seuil de tolerance : ");
+//        scanf("%d", &t);
+//        if(strlen(word) < t){
+//            printf("Le seuil de tolerance est plus grand que le nombre de caractere !\n");
+//        }
+//    }while(strlen(word) < t);
+//
+//    printf("Enfin, entrez le ");
+//    FILE* file = askDictionaryPath(-1,"r");
+//
+//    while(fgets(line, sizeof(line), file)) {
+//        printf("La difference du dico %s avec %s est de %d\n",line,word,strcmp(word,line));
+//        int i = 0;
+//        for(; i <strlen(line); i++){
+//            line[i]
+//        }
+//    }
+//
+//    retryOrExit();
+
+    char * s1= "unestring";
+    char * s2 ="unechaine";
+
+    if(strlen(s1) < strlen(s2)){
+
+    }else if(strlen(s1) > strlen(s2)){
+
+    }else{
+        int i = 0;
+        for(; i <strlen(s1);i++){
+
+        }
+    }
+}
+
+void showWordsNotExit(){
+
+    FILE* file = fopen("../dico/dicotest.txt","r");
+    FILE* dico = fopen("../dico/dico336k.txt","r");
+    char x[64];
+    char y[64];
+    int res = 0;
+    while (fscanf(file, "%63s", x) == 1) {
+        int ok = 0;
+        while(fscanf(dico,"%62s",y) == 1){
+
+            if((strstr(x,y) != 0) && ok == 0){
+                printf("%s\n",x);
+                ok = 1;
+            }
+        }
+    }
+    fclose(file);
+    fclose(dico);
+    printf("%d",strcmp("lol","mpm"));
+    printf("%d",strcmp("lol","lol"));
     retryOrExit();
+
 }
 
 void menu() {
@@ -176,7 +232,8 @@ void menu() {
         printf("4 - Detruire un fichier dictionnaire\n");
         printf("5 - Inserer un mot dans un dictionnaire\n");
         printf("6 - Rechercher un mot dans un dictionnaire\n");
-        printf("8 - Lister les mots qui n'existe pas\n");
+        printf("7 - Lister les mots proche (non terminee) \n");
+        printf("8 - Afficher les mots qui n'existe pas dans un dictionnaire  (non terminee) \n");
         printf("9 - Quitter\n");
 
         printf("\nChoix -> ");
@@ -202,9 +259,11 @@ void menu() {
         case 54:
             searchWordDictionary();
             break;
-        case 56:
-            listWordsNotExist();
+        case 55:
+            displayListCloseWords();
             break;
+        case 56:
+            showWordsNotExit();
         case 57:
             exit(0);
         default:
