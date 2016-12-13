@@ -6,14 +6,22 @@
 
 void retryOrExit() {
 
-    char res;
-    printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
-    scanf("%s", &res);
-    if(res == 79 || res == 111){
-        menu();
-    }else{
-        exit(0);
-    }
+
+    int exitDo = 0;
+    do{
+        char res;
+        printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
+        scanf("%s", &res);
+        if(res == 79 || res == 111){
+            menu();
+            exitDo =1;
+        }else if( res == 78 || res == 110){
+            exit(0);
+        }else{
+            printf("Oo/Nn pour continuer ou quitter\n");
+        }
+
+    }while(!exitDo);
 
 }
 void fileNotFound(char * path) {
@@ -151,6 +159,11 @@ void searchWordDictionary() {
 
 }
 
+void listWordsNotExist(){
+
+    retryOrExit();
+}
+
 void menu() {
     printf("Dictionnaire.\n\n");
 
@@ -163,11 +176,12 @@ void menu() {
         printf("4 - Detruire un fichier dictionnaire\n");
         printf("5 - Inserer un mot dans un dictionnaire\n");
         printf("6 - Rechercher un mot dans un dictionnaire\n");
-        printf("7 - Quitter\n");
+        printf("8 - Lister les mots qui n'existe pas\n");
+        printf("9 - Quitter\n");
 
         printf("\nChoix -> ");
         scanf("\n%c", &choice);
-    }while (choice < 49 || choice > 55);
+    }while (choice < 49 || choice > 57);
 
     switch (choice) {
         case 49:
@@ -188,7 +202,10 @@ void menu() {
         case 54:
             searchWordDictionary();
             break;
-        case 55:
+        case 56:
+            listWordsNotExist();
+            break;
+        case 57:
             exit(0);
         default:
             break;
