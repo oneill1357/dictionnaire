@@ -7,14 +7,21 @@
 
 void retryOrExit() {
 
-    char res;
-    printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
-    scanf("%s", &res);
-    if(res == 79 || res == 111){
-        menu();
-    }else{
-        exit(0);
-    }
+        int exitDo = 0;
+        do{
+            char res;
+            printf("Revenir au menu ou quitter le programme ? (o poour revenir au menu) : ");
+            scanf("%s", &res);
+            if(res == 79 || res == 111){
+                    menu();
+                exitDo =1;
+                }else if( res == 78 || res == 110){
+                    exit(0);
+                }else{
+                    printf("(Oo) pour continuer ou (Nn) pour quitter\n");
+                }
+
+        }while(!exitDo);
 
 }
 void fileNotFound(char * path) {
@@ -246,7 +253,7 @@ void menu() {
         printf("5 - Inserer un mot dans un dictionnaire\n");
         printf("6 - Rechercher un mot dans un dictionnaire\n");
         printf("7 - Lister les mots proche (non terminee) \n");
-        printf("8 - Afficher les mots qui n'existe pas dans un dictionnaire  (non terminee) \n");
+        printf("8 - Afficher les mots qui n'existe pas dans un dictionnaire\n");
         printf("9 - Quitter\n");
 
         printf("\nChoix -> ");
