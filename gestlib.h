@@ -17,6 +17,7 @@ void buildDictionaryWithTxt(); //3
 void deleteDictionaryFile(); //4
 void insertWordDictionary(); //5
 void searchWordDictionary(); //6
-void listWordsNotExist(); //8
+void displayListCloseWords(); //7
+void showWordsNotExist(); // 8
 
 #endif //SOURCES_DICO_GESTLIB_H
