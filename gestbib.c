@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include "gestlib.h"
 
-
+char dico[128];
 void retryOrExit() {
 
         int exitDo = 0;
@@ -37,26 +37,51 @@ FILE* askDictionaryPath(int num,char * mode) {
         printf("Nom du fichier texte a scanner : ");
     }else if(num == 3){
         printf("Nom du dictionnaire a remplir : ");
+    }else if(num == 4){
+        printf("Nom du fichier dictionnaire a charger: ");
     }else{
         printf("Nom du fichier dictionnaire a utiliser: ");
     }
     char path[100];
     scanf("%s",&path);
-    return loadExistingDictionary(path,mode);
+    if(num == 4){
+        dico[0] = 0;
+        strcat(dico,path);
+    }
+    return loadNewFile(path,mode,num);
 
 }
 //Ouvre et retourne le fichier
-FILE* loadExistingDictionary(char * path,char* mode) {
+FILE* loadNewFile(char * path,char* mode,int num) {
 
     FILE* file = NULL;
 
     file = fopen(path,mode);
 
     if(file == NULL){
+        if(num == 4){
+            dico[0] = 0;
+        }
        fileNotFound(path);
     }
 
     return file;
+}
+FILE* loadExistingFile(char * mode){
+
+    if(strlen(dico) != 0){
+        FILE* file = fopen(dico,mode);
+        if(file != NULL){
+            return file;
+        }else{
+            printf("Impossible de charger le fichier\n");
+            retryOrExit();
+        }
+
+    }else{
+        printf("Le chemin du fichier n'est pas defini\n");
+        retryOrExit();
+    }
 }
 
 void createDictionaryFile() {
@@ -69,15 +94,36 @@ void createDictionaryFile() {
 // Ouvre et lit toutes les lignes du fichier
 void useExistingDictionary() {
 
-    FILE* file = askDictionaryPath(-1,"r");
+    FILE* file = askDictionaryPath(4,"r");
 
     char line[100];
-    while(fgets(line, sizeof(line),file)){
-        printf("%s",line);
+    int exitDo = 0;
+    int inspect = 0;
+    do{
+        char res;
+        printf("Voulez-vous inspecter le fichier ? (o/n)");
+        scanf("%s", &res);
+        if(res == 79 || res == 111){
+            inspect = 1;
+            exitDo =1;
+        }else if( res == 78 || res == 110){
+            fclose(file);
+            menu();
+        }else{
+            printf("(Oo) pour lister , (Nn) pour revenir au menu\n");
+        }
+
+    }while(!exitDo);
+
+    if(inspect == 1) {
+        while (fgets(line, sizeof(line), file)) {
+            printf("%s", line);
+        }
     }
+    printf("------ Fin du fichier ------\n");
 
     fclose(file);
-    retryOrExit();
+    menu();
 
 }
 
@@ -103,10 +149,12 @@ void buildDictionaryWithTxt() {
 }
 // Supprime un dictionnaire
 void deleteDictionaryFile() {
-
     char path[100];
     printf("Nom du fichier dictionnaire a supprimer : ");
     scanf("%s",&path);
+    if(strcmp(path,dico) == 0){
+        dico[0] = 0;
+    }
     remove(path);
     printf("Le dictionnaire a ete supprime\n");
 
@@ -116,7 +164,7 @@ void deleteDictionaryFile() {
 // Insert le mot à la fin du dictionnaire
 void insertWordDictionary() {
 
-    FILE* file = askDictionaryPath(-1,"a");
+    FILE* file = loadExistingFile("a");
     char word[128];
     printf("Entrez le mot a rajouter au dictionnaire : ");
     scanf("%s", &word);
@@ -132,7 +180,7 @@ void insertWordDictionary() {
 // Recherche un mot dans le dictionnaire
 void searchWordDictionary() {
 
-    FILE* file = askDictionaryPath(-1,"r");
+    FILE* file = loadExistingFile("r");
 
     char word[100];
     char line[100];
@@ -207,7 +255,7 @@ void displayListCloseWords(){
 void showWordsNotExist(){
 
     FILE* file = askDictionaryPath(2,"r");
-    FILE* dico = askDictionaryPath(-1,"r");
+    FILE* dico = loadExistingFile("r");
     char dicoWord[64];
     char fileWord[64];
 
@@ -246,6 +294,11 @@ void menu() {
     char choice;
 
     do {
+        if(strlen(dico) == 0){
+            printf("!! Aucun dictionnaire defini !!\n");
+        }else{
+            printf("Le dictionnaire defini est %s\n",dico);
+        }
         printf("1 - Creer un fichier dictionnaire\n");
         printf("2 - Utiliser un dictionnaire existant\n");
         printf("3 - Fabriquer un dictionnaire a partir d'un fichier texte\n");

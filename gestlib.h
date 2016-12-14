@@ -10,7 +10,8 @@ void menu();
 void retryOrExit();
 void fileNotFound(char *);
 FILE* askDictionaryPath(int,char *);
-FILE* loadExistingDictionary(char *,char *);
+FILE* loadNewFile(char *,char *,int num);
+FILE* loadExistingFile(char * mode);
 void createDictionaryFile(); //1
 void useExistingDictionary(); //2
 void buildDictionaryWithTxt(); //3
