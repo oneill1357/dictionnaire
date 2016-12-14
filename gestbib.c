@@ -226,7 +226,7 @@ void menu() {
         printf("4 - Detruire un fichier dictionnaire\n");
         printf("5 - Inserer un mot dans un dictionnaire\n");
         printf("6 - Rechercher un mot dans un dictionnaire\n");
-        printf("7 - Lister les mots proche (non terminee) \n");
+        printf("7 - Lister les mots proche\n");
         printf("8 - Afficher les mots qui n'existe pas dans un dictionnaire\n");
         printf("9 - Quitter\n");
 
