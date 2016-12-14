@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include "gestlib.h"
+#include "gestrech.c"
+#include "gestorth.c"
 
 char dico[128];
+
 void retryOrExit() {
 
         int exitDo = 0;
@@ -203,87 +205,6 @@ void searchWordDictionary() {
         printf("Le mot '%s' n'existe pas dans le dictionnaire.\n",word);
     }
 
-    retryOrExit();
-
-}
-
-void displayListCloseWords(){
-
-//    char line[100];
-//    char word[100];
-//    int t;
-//
-//    do {
-//        printf("Entrez le mot de proximite : ");
-//        scanf("%s", &word);
-//        printf("Entrez le seuil de tolerance : ");
-//        scanf("%d", &t);
-//        if(strlen(word) < t){
-//            printf("Le seuil de tolerance est plus grand que le nombre de caractere !\n");
-//        }
-//    }while(strlen(word) < t);
-//
-//    printf("Enfin, entrez le ");
-//    FILE* file = askDictionaryPath(-1,"r");
-//
-//    while(fgets(line, sizeof(line), file)) {
-//        printf("La difference du dico %s avec %s est de %d\n",line,word,strcmp(word,line));
-//        int i = 0;
-//        for(; i <strlen(line); i++){
-//            line[i]
-//        }
-//    }
-//
-//    retryOrExit();
-
-    char * s1= "unestring";
-    char * s2 ="unechaine";
-
-    if(strlen(s1) < strlen(s2)){
-
-    }else if(strlen(s1) > strlen(s2)){
-
-    }else{
-        int i = 0;
-        for(; i <strlen(s1);i++){
-
-        }
-    }
-}
-
-//A modifier, numéro de ligne non implémenté
-void showWordsNotExist(){
-
-    FILE* file = askDictionaryPath(2,"r");
-    FILE* dico = loadExistingFile("r");
-    char dicoWord[64];
-    char fileWord[64];
-
-    printf("Fichier ouvert");
-
-    while(!feof(file)){
-        rewind(dico);
-        int show = 0;
-        fscanf(file,"%s ",fileWord);
-        int i = 0;
-        for(; i < strlen(fileWord);i++){
-            fileWord[i] = tolower(fileWord[i]);
-        }
-        while(!feof(dico)) {
-            fscanf(dico, "%s ", dicoWord);
-            if(strcmp(fileWord, dicoWord) != 0){
-                show = 1;
-            }else{
-                show = 0;
-                break;
-            }
-        }
-        if(show == 1){
-            printf("Le mot '%s' n'a pas ete trouve dans le dictionnaire\n",fileWord);
-        }
-    }
-    fclose(file);
-    fclose(dico);
     retryOrExit();
 
 }
