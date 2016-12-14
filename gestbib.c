@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "gestlib.h"
 
 
@@ -195,27 +196,39 @@ void displayListCloseWords(){
     }
 }
 
-void showWordsNotExit(){
+//A modifier, numéro de ligne non implémenté
+void showWordsNotExist(){
 
-    FILE* file = fopen("../dico/dicotest.txt","r");
-    FILE* dico = fopen("../dico/dico336k.txt","r");
-    char x[64];
-    char y[64];
-    int res = 0;
-    while (fscanf(file, "%63s", x) == 1) {
-        int ok = 0;
-        while(fscanf(dico,"%62s",y) == 1){
+    FILE* file = askDictionaryPath(2,"r");
+    FILE* dico = askDictionaryPath(-1,"r");
+    char dicoWord[64];
+    char fileWord[64];
 
-            if((strstr(x,y) != 0) && ok == 0){
-                printf("%s\n",x);
-                ok = 1;
+    printf("Fichier ouvert");
+
+    while(!feof(file)){
+        rewind(dico);
+        int show = 0;
+        fscanf(file,"%s ",fileWord);
+        int i = 0;
+        for(; i < strlen(fileWord);i++){
+            fileWord[i] = tolower(fileWord[i]);
+        }
+        while(!feof(dico)) {
+            fscanf(dico, "%s ", dicoWord);
+            if(strcmp(fileWord, dicoWord) != 0){
+                show = 1;
+            }else{
+                show = 0;
+                break;
             }
+        }
+        if(show == 1){
+            printf("Le mot '%s' n'a pas ete trouve dans le dictionnaire\n",fileWord);
         }
     }
     fclose(file);
     fclose(dico);
-    printf("%d",strcmp("lol","mpm"));
-    printf("%d",strcmp("lol","lol"));
     retryOrExit();
 
 }
@@ -263,7 +276,7 @@ void menu() {
             displayListCloseWords();
             break;
         case 56:
-            showWordsNotExit();
+            showWordsNotExist();
         case 57:
             exit(0);
         default:

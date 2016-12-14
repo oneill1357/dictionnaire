@@ -18,6 +18,6 @@ void deleteDictionaryFile(); //4
 void insertWordDictionary(); //5
 void searchWordDictionary(); //6
 void displayListCloseWords(); //7
-void showWordsNotExit(); // 8
+void showWordsNotExist(); // 8
 
 #endif //SOURCES_DICO_GESTLIB_H
